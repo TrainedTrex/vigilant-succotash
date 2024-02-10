@@ -8,13 +8,15 @@ import (
 
 func main() {
 	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
 
+	e.GET("/", homePage)
 	e.GET("/users/:id", getUser)
 
 	e.Logger.Fatal(e.Start(":1323"))
+}
+
+func homePage(c echo.Context) error {
+	return c.String(http.StatusOK, "Hello, World!")
 }
 
 func getUser(c echo.Context) error {
