@@ -22,5 +22,8 @@ func homePage(c echo.Context) error {
 func getUser(c echo.Context) error {
 	// User ID from path `users/:id`
 	id := c.Param("id")
+	for i := 0; i < 1; i++ {
+
+	}
 	return c.String(http.StatusOK, id)
 }
