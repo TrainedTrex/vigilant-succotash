@@ -10,7 +10,9 @@ func main() {
 	e := echo.New()
 
 	e.GET("/", homePage)
-	e.GET("/users/:id", getUser)
+
+	e.GET("/spotify", spotify)
+	e.GET("/spotify/song", spotifySong)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
@@ -19,8 +21,10 @@ func homePage(c echo.Context) error {
 	return c.String(http.StatusOK, "Hello, World!")
 }
 
-func getUser(c echo.Context) error {
-	// User ID from path `users/:id`
-	id := c.Param("id")
-	return c.String(http.StatusOK, id)
+func spotify(c echo.Context) error {
+	return c.String(http.StatusOK, "Spofity API endpoint")
+}
+
+func spotifySong(c echo.Context) error {
+	return c.String(http.StatusOK, "Current song")
 }
